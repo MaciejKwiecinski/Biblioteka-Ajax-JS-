@@ -1,37 +1,66 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <style>
-        ul{
-            list-style-type:none;
+        .styler{
+            background-color: lightgoldenrodyellow;
         }
-        .title{
+        ul {
+            list-style-type: none;
+        }
+        .title {
             font-size: 24px;
             font-weight: bold;
-
-            margin-top:20px;
-            margin-bottom:20px;
-            display:inline-block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
         }
-        .details{
+        .details {
             display: none;
-            height: 50px;
-            border:1px solid gray;
+            padding-top: 10px;
+            padding-left: 10px;
+            border: 1px solid gray;
             box-shadow: 2px 3px 4px darkgrey;
         }
+        form {
+            width: 59%;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid gray;
+            box-shadow: 2px 3px 4px darkgray;
+        }
+        input {
+            margin-right: 5px;
+        }
+        btn btn-outline-danger{
+            margin-left: 100%;
+        }
     </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-<div class="bookInfo">
-    <ul class="booksList">
+<body class="styler">
+    <div class="addBookForm">
+        <form>
+            <input placeholder="Title" />
+            <input placeholder="Author" />
+            <input type="number" placeholder="ISBN" />
+            <input placeholder="Publisher" />
+            <input type="number" placeholder="Genre" max="7" min="1"/>
+            <button type="button" class="btn btn-primary add-btn">Dodaj</button>
+        </form>
+    </div>
 
-    </ul>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.js"   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
+    <div class="booksInfo">
+        <h2>Lista książek: </h2>
+        <ul class="booksList">
+            <!-- tu poprzez JS-a będziemy dodawać ksiązki -->
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>
 </html>
