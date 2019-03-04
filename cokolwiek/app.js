@@ -16,7 +16,7 @@ $(document).ready(function() {
 
         for (var i = 0; i < result.length; i++) {
             $(".booksList")
-            .append("<li><span class='title' data-id='" + result[i].id + "'>" + result[i].title + "</span><div class='details'></div><button class='btn btn-outline-danger' data-id='" + result[i].id + "'>Usuń</button></li>");
+          .append("<li><button class='btn btn-danger' data-id='\" + result[i].id + \"'>Usuń</button><span class='title' data-id='" + result[i].id + "'>" + result[i].title + "</span><div class='details'></div></li>");
             var bookDetails = {
                 author: result[i].author,
                 isbn: result[i].isbn,
@@ -37,10 +37,10 @@ $(document).ready(function() {
                 $(this).next().css("display", "none");
             }
         });
-        $('.btn btn-outline-danger').click(function (event) {
-            console.log('cycki');
-            deleteBook($(event.target).data("id")); // albo zamiast this event.target
-        });
+        $('.btn.btn-danger').click(function (event) {
+        console.log('cycki');
+        deleteBook($(this).next().data("id")); // albo zamiast this event.target
+        })
 
         $(".add-btn").click(function(event) {
             var inputs = $("form input");
@@ -70,10 +70,10 @@ $(document).ready(function() {
             console.log(error);
         })
     }
-     function deleteBook(id) {
+     function deleteBook(book) {
         $.ajax({
             method: "DELETE",
-            url: "http://127.0.0.1:8000/book/" + id, // nie wiem czy tu na koncu nie musi tez byc / - sprawdz jak wyglada endpoint wg. dokumentacji / prezentacji bo to ma znaczenie
+            url: "http://127.0.0.1:8000/book/" + book, // nie wiem czy tu na koncu nie musi tez byc / - sprawdz jak wyglada endpoint wg. dokumentacji / prezentacji bo to ma znaczenie
             dataType: "json"
         }).done(function(result) {
             getBooks();
@@ -82,5 +82,4 @@ $(document).ready(function() {
             console.log(error);
         })
     }
-
 })
